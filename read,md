@@ -1,0 +1,22 @@
+# 🎧 Emotion-Based Music Player
+
+A smart Streamlit app that detects your facial emotion and plays mood-matching music automatically!
+
+## 💡 Features
+
+- Face detection via webcam
+- Emotion recognition using OpenCV FisherFace model
+- Plays random music based on detected emotion
+- Clean Streamlit dashboard with:
+  - Background image
+  - Emotion-specific music library display
+  - Detection overlay with status
+- Manual detection button + stop button
+- Full mobile/tablet-friendly layout
+
+## 🚀 How to Run
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/emotion-music-player.git
+   cd emotion-music-player
