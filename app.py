@@ -1,14 +1,12 @@
 import streamlit as st
 import cv2
 import numpy as np
-import pygame
 import os
 import random
 import threading
 import time
 
-# Initialize pygame mixer
-pygame.mixer.init()
+
 
 # Load the face recognizer model and classifier
 fishface = cv2.face.FisherFaceRecognizer_create()
@@ -31,12 +29,10 @@ def detect_emotion(gray, face):
     return None
 
 # Music playback
-def play_song(path):
-    duration = pygame.mixer.Sound(path).get_length()
-    pygame.mixer.music.load(path)
-    pygame.mixer.music.play()
+def play_song_streamlit(path):
+    audio_bytes = open(path, "rb").read()
+    st.audio(audio_bytes, format="audio/mp3")
     thread_data["song_name"] = os.path.basename(path)
-    thread_data["song_end_time"] = time.time() + duration
     thread_data["start_requested"] = False
 
 # UI Setup
@@ -179,6 +175,7 @@ def monitor():
         else:
             time.sleep(0.05)  # Faster refresh
 
-monitor()
+if st.button("🎬 Start Detection"):
+    run_detection()
 
 
